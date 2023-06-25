@@ -312,8 +312,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
             "system:" + Settings.System.RETICKER_STATUS;
     private static final String PULSE_ON_NEW_TRACKS =
             Settings.Secure.PULSE_ON_NEW_TRACKS;
-    private static final String QS_TRANSPARENCY =
-            "system:" + Settings.System.QS_TRANSPARENCY;
 
     private static final int MSG_OPEN_SETTINGS_PANEL = 1002;
     private static final int MSG_LAUNCH_TRANSITION_TIMEOUT = 1003;
@@ -987,7 +985,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         mTunerService.addTunable(this, LESS_BORING_HEADS_UP);
         mTunerService.addTunable(this, RETICKER_STATUS);
         mTunerService.addTunable(this, PULSE_ON_NEW_TRACKS);
-        mTunerService.addTunable(this, QS_TRANSPARENCY);
 
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
 
@@ -4326,10 +4323,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
                 KeyguardSliceProvider sliceProvider = KeyguardSliceProvider.getAttachedInstance();
                 if (sliceProvider != null)
                     sliceProvider.setPulseOnNewTracks(showPulseOnNewTracks);
-                break;
-            case QS_TRANSPARENCY:
-                mScrimController.setCustomScrimAlpha(
-                        TunerService.parseInteger(newValue, 100));
                 break;
             default:
                 break;
